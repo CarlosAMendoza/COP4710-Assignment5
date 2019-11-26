@@ -1,0 +1,19 @@
+{
+  "name": "cop4710-assignment5",
+  "version": "1.0.0",
+  "description": "A website using Angular, Node, Express, and MySql to update, modify, and retrieve data from database.",
+  "main": "src/app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlosAMendoza/COP4710-Assignment5.git"
+  },
+  "author": "Carlos A Mendoza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarlosAMendoza/COP4710-Assignment5/issues"
+  },
+  "homepage": "https://github.com/CarlosAMendoza/COP4710-Assignment5#readme"
+}
