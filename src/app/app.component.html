@@ -1,0 +1,29 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-12">
+        <h4>Get All</h4>
+            <ngb-tabset type="pills">
+                <ngb-tab title="Books">
+                    <ng-template ngbTabContent>
+                        <app-books-table></app-books-table>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Publishers">
+                    <ng-template ngbTabContent>
+                        <app-publisher-table></app-publisher-table>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Authors">
+                    <ng-template ngbTabContent>
+                        <app-author-table></app-author-table>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Copies">
+                    <ng-template ngbTabContent>
+                        <app-copy-table></app-copy-table>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+</div>

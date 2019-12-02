@@ -1,0 +1,16 @@
+<table class="table table-striped mt-2">
+        <thead>
+            <tr>
+                <th scope="col">Publisher Code</th>
+                <th scope="col">Publisher Name</th>
+                <th scope="col">City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pub of publishers">
+                <td>{{pub.publisherCode}}</td>
+                <td>{{pub.publisherName}}</td>
+                <td>{{pub.city}}</td>
+            </tr>
+        </tbody>
+    </table>

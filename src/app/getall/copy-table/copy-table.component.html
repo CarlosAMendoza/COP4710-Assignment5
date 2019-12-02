@@ -1,0 +1,20 @@
+<table class="table table-striped mt-2">
+        <thead>
+            <tr>
+                <th scope="col">Book Code</th>
+                <th scope="col">Branch Number</th>
+                <th scope="col">Copy Number</th>
+                <th scope="col">Quality</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let copy of copies">
+                <td>{{copy.bookCode}}</td>
+                <td>{{copy.branchNum}}</td>
+                <td>{{copy.copyNum}}</td>
+                <td>{{copy.quality}}</td>
+                <td>${{copy.price}}</td>
+            </tr>
+        </tbody>
+    </table>

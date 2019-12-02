@@ -1,0 +1,20 @@
+<table class="table table-striped mt-2">
+    <thead>
+        <tr>
+            <th scope="col">Book Code</th>
+            <th scope="col">Title</th>
+            <th scope="col">Publisher Code</th>
+            <th scope="col">Type</th>
+            <th scope="col">Paperback</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{book.bookCode}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.publisherCode}}</td>
+            <td>{{book.type}}</td>
+            <td>{{book.paperback}}</td>
+        </tr>
+    </tbody>
+</table>
