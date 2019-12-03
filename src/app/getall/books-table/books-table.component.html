@@ -6,15 +6,20 @@
             <th scope="col">Publisher Code</th>
             <th scope="col">Type</th>
             <th scope="col">Paperback</th>
+            <th scope="col" class="border-left" >Edit</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let book of books">
+        <tr *ngFor="let book of books, index as i">
             <td>{{book.bookCode}}</td>
             <td>{{book.title}}</td>
             <td>{{book.publisherCode}}</td>
             <td>{{book.type}}</td>
             <td>{{book.paperback}}</td>
+            <td class="btn-group border-left">
+                <a role="button" class="btn btn-warning"><i class="fas fa-pen" style="color: white;"></i></a>
+                <a role="button" class="btn btn-danger" (click)="deleteButton(i)"><i class="fas fa-trash-alt" style="color: white;"></i></a>
+            </td>
         </tr>
     </tbody>
 </table>

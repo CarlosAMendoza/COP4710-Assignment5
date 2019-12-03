@@ -1,3 +1,4 @@
+import { apiConfig } from 'src/api.config'
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http'
 
@@ -14,10 +15,26 @@ export class AuthorTableComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    const obs = this.http.get('http://192.168.1.100:4001/allauthors', this.options)
+    this.getAuthors()
+  }
+
+  getAuthors() {
+    const obs = this.http.get(apiConfig + '/allauthors', this.options)
     obs.subscribe((response: Author[]) => {
       this.authors = response
     })
+  }
+
+  deleteButton(i: number) {
+    if (confirm('Are you sure you want to delete ' + this.authors[i].authorNum)) {
+      const authorNum = this.authors[i].authorNum
+      const obs = this.http.delete( apiConfig + '/delete/author/' + authorNum, this.options)
+      obs.subscribe((res: {deleted: boolean}) => {
+        if (res.deleted) {
+        this.getAuthors()
+        }
+      })
+    }
   }
 
 }

@@ -4,13 +4,18 @@
                 <th scope="col">Author Number</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
+                <th scope="col" class="border-left" >Edit</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let author of authors">
+            <tr *ngFor="let author of authors, index as i">
                 <td>{{author.authorNum}}</td>
                 <td>{{author.authorFirst}}</td>
                 <td>{{author.authorLast}}</td>
+                <td class="btn-group border-left">
+                        <a role="button" class="btn btn-warning"><i class="fas fa-pen" style="color: white;"></i></a>
+                        <a role="button" class="btn btn-danger" (click)="deleteButton(i)"><i class="fas fa-trash-alt" style="color: white;"></i></a>
+                    </td>
             </tr>
         </tbody>
     </table>

@@ -4,13 +4,18 @@
                 <th scope="col">Publisher Code</th>
                 <th scope="col">Publisher Name</th>
                 <th scope="col">City</th>
+                <th scope="col" class="border-left" >Edit</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pub of publishers">
+            <tr *ngFor="let pub of publishers, index as i">
                 <td>{{pub.publisherCode}}</td>
                 <td>{{pub.publisherName}}</td>
                 <td>{{pub.city}}</td>
+                <td class="btn-group border-left">
+                        <a role="button" class="btn btn-warning"><i class="fas fa-pen" style="color: white;"></i></a>
+                        <a role="button" class="btn btn-danger" (click)="deleteButton(i)"><i class="fas fa-trash-alt" style="color: white;"></i></a>
+                    </td>
             </tr>
         </tbody>
     </table>

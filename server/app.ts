@@ -1,8 +1,12 @@
 import * as express from 'express'
+import * as bodyParser from 'body-parser'
 import * as mysql from 'mysql'
 import {getAll} from './getAll'
+import { connect } from './config'
+import { deleteRoutes } from './deleteRoute'
 
 const app = express()
+app.use(bodyParser())
 
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', ['*']);
@@ -12,6 +16,8 @@ app.use((req, res, next) => {
 });
 
 app.use(getAll)
+
+app.use(deleteRoutes)
 
 app.listen(4001, () => console.log('Server Running'))
 

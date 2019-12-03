@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { apiConfig } from 'src/api.config'
 
 @Component({
   selector: 'app-books-table',
@@ -15,10 +16,26 @@ export class BooksTableComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    const obs = this.http.get('http://192.168.1.100:4001/allbooks', this.options)
+    this.getBooks()
+  }
+
+  private getBooks() {
+    const obs = this.http.get(apiConfig + '/allbooks', this.options)
     obs.subscribe((response: Book[]) => {
       this.books = response
     })
+  }
+
+  deleteButton(i: number) {
+    if (confirm('Are you sure you want to delete ' + this.books[i].title)) {
+      const bookCode = this.books[i].bookCode
+      const obs = this.http.delete( apiConfig + '/delete/book/' + bookCode, this.options)
+      obs.subscribe((res: {deleted: boolean}) => {
+        if (res.deleted) {
+        this.getBooks()
+        }
+      })
+    }
   }
 
 }
