@@ -65,4 +65,26 @@ insertRoutes.post('/insert/author/:authorNum', (req, res) => {
     console.log(query)
 })
 
+insertRoutes.post('/insert/copy/:copyNum', (req, res) => {
+    const connection = connect
+
+    const query = 'INSERT INTO Copy VALUES (' +
+    '\'' + req.body.bookCode + '\', ' +
+    '\'' + req.body.branchNum + '\', ' +
+    '\'' + req.body.copyNum + '\', ' +
+    '\'' + req.body.quality + '\', ' +
+    '\'' + req.body.price + '\') '
+
+    connection.query(query, (err, rows, fields) => {
+        if (err) {
+            console.log('Failed Query for users ' + err)
+            res.send({inserted: false})
+            return
+        }
+        console.log('Insert Data')
+        res.send({inserted: true})
+    })
+    console.log(query)
+})
+
 export {insertRoutes}

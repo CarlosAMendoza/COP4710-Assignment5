@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{action}} Copy</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('cancel')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label>Book Code</label>
+      <input ngbAutofocus type="text" class="form-control" maxlength="4" [(ngModel)]="copy.bookCode" name="bookCode" [readonly]="action === 'Modify'">
+      <label>Branch Number</label>
+      <input type="number" class="form-control" [(ngModel)]="copy.branchNum" name="branchNum" [readonly]="action === 'Modify'">
+      <label>Copy Number</label>
+      <input type="number" class="form-control" [(ngModel)]="copy.copyNum" name="copyNum" [readonly]="action === 'Modify'">
+      <label>Quality</label>
+      <input type="text" class="form-control" maxlength="20" [(ngModel)]="copy.quality" name="quality">
+      <label>Price</label>
+      <input type="number" class="form-control" [(ngModel)]="copy.price" name="price">
+    </div>
+  </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel')">Cancel</button>
+    <button type="button" class="btn text-white" [ngClass]="{'btn-success': action == 'Add','btn-warning': action == 'Modify'}"
+    (click)="onClose()">{{action}}</button>
+  </div>

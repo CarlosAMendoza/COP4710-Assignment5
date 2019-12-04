@@ -13,6 +13,7 @@ import { AuthorTableComponent } from './getall/author-table/author-table.compone
 import { BookModalComponent } from './getall/books-table/book.modal/book.modal.component';
 import { PublisherModalComponent } from './getall/publisher-table/publisher-modal/publisher.modal.component';
 import { AuthorModalComponent } from './getall/author-table/author-modal/author.modal.component';
+import { CopyModalComponent } from './getall/copy-table/copy-modal/copy.modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AuthorModalComponent } from './getall/author-table/author-modal/author.
     AuthorTableComponent,
     BookModalComponent,
     PublisherModalComponent,
-    AuthorModalComponent
+    AuthorModalComponent,
+    CopyModalComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { AuthorModalComponent } from './getall/author-table/author-modal/author.
   entryComponents: [
     BookModalComponent,
     PublisherModalComponent,
-    AuthorModalComponent
+    AuthorModalComponent,
+    CopyModalComponent
   ]
 })
 export class AppModule { }

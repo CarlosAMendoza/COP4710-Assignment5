@@ -62,4 +62,25 @@ modifyRoutes.post('/modify/author/:authorNum', (req, res) => {
     })
 })
 
+modifyRoutes.post('/modify/copy/:copyNum/:bookCode/:branchNum', (req, res) => {
+    const connection = connect
+
+    const query = 'UPDATE Copy SET ' +
+    'quality = \'' + req.body.quality + '\', ' +
+    'price = \'' + req.body.price + '\' ' +
+    'WHERE bookCode = \'' + req.params.bookCode + '\' AND ' +
+    'branchNum = ' + req.params.branchNum + ' AND ' +
+    'copyNum =' + req.params.copyNum
+
+    connection.query(query, (err, rows, fields) => {
+        if (err) {
+            console.log('Failed Query for users ' + err)
+            res.send({modified: false})
+            return
+        }
+        console.log('Modified Data')
+        res.send({modified: true})
+    })
+})
+
 export {modifyRoutes}
