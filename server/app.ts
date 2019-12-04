@@ -4,6 +4,9 @@ import * as mysql from 'mysql'
 import {getAll} from './getAll'
 import { connect } from './config'
 import { deleteRoutes } from './deleteRoute'
+import { modifyRoutes } from './modifyRoute'
+import { insertRoutes } from './insertRoute'
+
 
 const app = express()
 app.use(bodyParser())
@@ -18,6 +21,10 @@ app.use((req, res, next) => {
 app.use(getAll)
 
 app.use(deleteRoutes)
+
+app.use(modifyRoutes)
+
+app.use(insertRoutes)
 
 app.listen(4001, () => console.log('Server Running'))
 

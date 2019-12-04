@@ -1,3 +1,5 @@
+import { BookModalComponent } from './book.modal/book.modal.component'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { apiConfig } from 'src/api.config'
@@ -5,7 +7,8 @@ import { apiConfig } from 'src/api.config'
 @Component({
   selector: 'app-books-table',
   templateUrl: './books-table.component.html',
-  styleUrls: ['./books-table.component.css']
+  styleUrls: ['./books-table.component.css'],
+  entryComponents: [BookModalComponent]
 })
 export class BooksTableComponent implements OnInit {
 
@@ -13,10 +16,52 @@ export class BooksTableComponent implements OnInit {
 
   private options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.getBooks()
+  }
+
+  add() {
+    const modalRef = this.modalService.open(BookModalComponent)
+    modalRef.componentInstance.action = 'Add'
+    modalRef.result.then((result: Book) => {
+      this.sendAdd(result)
+    }, (result) => {
+      console.log(result)
+    })
+  }
+
+  modify(i: number) {
+    const modalRef = this.modalService.open(BookModalComponent)
+    modalRef.componentInstance.action = 'Modify'
+    modalRef.componentInstance.book = new Book(this.books[i].bookCode, this.books[i].title, this.books[i].publisherCode,
+      this.books[i].type, this.books[i].paperback)
+    modalRef.result.then((result: Book) => {
+      this.sendModify(result)
+    }, (result) => {
+      console.log(result)
+    })
+  }
+
+  sendAdd(data: Book) {
+    const bookCode = data.bookCode
+    const obs = this.http.post( apiConfig + '/insert/book/' + bookCode, JSON.stringify(data), this.options)
+    obs.subscribe((res: {inserted: boolean}) => {
+      if (res.inserted) {
+        this.getBooks()
+      }
+    })
+  }
+
+  sendModify(data: Book) {
+    const bookCode = data.bookCode
+    const obs = this.http.post( apiConfig + '/modify/book/' + bookCode, JSON.stringify(data), this.options)
+    obs.subscribe((res: {modified: boolean}) => {
+      if (res.modified) {
+        this.getBooks()
+      }
+    })
   }
 
   private getBooks() {
@@ -40,6 +85,6 @@ export class BooksTableComponent implements OnInit {
 
 }
 
-class Book {
+export class Book {
   constructor(public bookCode: string, public title: string, public publisherCode: string, public type: string, public paperback: string) {}
 }
