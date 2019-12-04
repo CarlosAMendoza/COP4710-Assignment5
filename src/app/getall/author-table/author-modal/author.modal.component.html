@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{action}} Book</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('cancel')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label>Author Number</label>
+      <input ngbAutofocus type="number" class="form-control" [(ngModel)]="author.authorNum" name="authorNum" [readonly]="action === 'Modify'">
+      <label>First Name</label>
+      <input type="text" class="form-control" maxlength="10" [(ngModel)]="author.authorFirst" name="authorFirst">
+      <label>Last Name</label>
+      <input type="text" class="form-control" maxlength="12" [(ngModel)]="author.authorLast" name="authorLast">
+    </div>
+  </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel')">Cancel</button>
+    <button type="button" class="btn text-white" [ngClass]="{'btn-success': action == 'Add','btn-warning': action == 'Modify'}"
+    (click)="onClose()">{{action}}</button>
+  </div>

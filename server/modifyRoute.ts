@@ -24,4 +24,42 @@ modifyRoutes.post('/modify/book/:bookCode', (req, res) => {
     })
 })
 
+modifyRoutes.post('/modify/pub/:pubCode', (req, res) => {
+    const connection = connect
+
+    const query = 'UPDATE Publisher SET ' +
+    'publisherName = \'' + req.body.publisherName + '\', ' +
+    'city = \'' + req.body.city + '\' ' +
+    'WHERE publisherCode = \'' + req.params.pubCode + '\''
+
+    connection.query(query, (err, rows, fields) => {
+        if (err) {
+            console.log('Failed Query for users ' + err)
+            res.send({modified: false})
+            return
+        }
+        console.log('Modified Data')
+        res.send({modified: true})
+    })
+})
+
+modifyRoutes.post('/modify/author/:authorNum', (req, res) => {
+    const connection = connect
+
+    const query = 'UPDATE Author SET ' +
+    'authorLast = \'' + req.body.authorLast + '\', ' +
+    'authorFirst = \'' + req.body.authorFirst + '\' ' +
+    'WHERE authorNum = ' + req.params.authorNum
+
+    connection.query(query, (err, rows, fields) => {
+        if (err) {
+            console.log('Failed Query for users ' + err)
+            res.send({modified: false})
+            return
+        }
+        console.log('Modified Data')
+        res.send({modified: true})
+    })
+})
+
 export {modifyRoutes}

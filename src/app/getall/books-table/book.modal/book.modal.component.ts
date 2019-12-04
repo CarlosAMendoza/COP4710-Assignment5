@@ -1,8 +1,6 @@
-import { Book } from './../books-table.component'
+import { Book, action } from '../../table.model'
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
-type action = 'Modify' | 'Add'
 
 @Component({
   selector: 'app-book-modal',

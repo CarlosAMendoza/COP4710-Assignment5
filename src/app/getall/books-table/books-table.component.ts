@@ -1,3 +1,4 @@
+import { Book } from './../table.model'
 import { BookModalComponent } from './book.modal/book.modal.component'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { Component, OnInit } from '@angular/core';
@@ -85,6 +86,4 @@ export class BooksTableComponent implements OnInit {
 
 }
 
-export class Book {
-  constructor(public bookCode: string, public title: string, public publisherCode: string, public type: string, public paperback: string) {}
-}
+

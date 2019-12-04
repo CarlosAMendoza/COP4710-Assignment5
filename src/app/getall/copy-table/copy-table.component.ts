@@ -1,6 +1,7 @@
 import { apiConfig } from 'src/api.config'
 import { Component, OnInit } from '@angular/core'
 import { HttpHeaders, HttpClient } from '@angular/common/http'
+import { Copy } from '../table.model'
 
 @Component({
   selector: 'app-copy-table',
@@ -41,6 +42,6 @@ export class CopyTableComponent implements OnInit {
   }
 }
 
-class Copy {
-  constructor(public bookCode: string, public branchNum: number, public copyNum: number, public quality: string, public price: number) {}
-}
+// class Copy {
+//   constructor(public bookCode: string, public branchNum: number, public copyNum: number, public quality: string, public price: number) {}
+// }
