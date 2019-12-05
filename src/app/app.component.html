@@ -1,4 +1,16 @@
-<div class="container mt-3">
+<nav class="navbar navbar-light navbar-expand bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#" (click)="onBack()">
+              <img src="assets/books.png" width="60" height="60" class="float-left" alt="">
+              <h1 class="float-left ml-4 mt-2">Henry Books</h1>
+            </a>
+            <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" [(ngModel)]="searchQuery">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onSearch()">Search</button>
+                  </form>
+        </div>
+</nav>
+<div *ngIf="!searching" class="container mt-3">
     <div class="row">
         <div class="col-sm-12">
         <h4>Get All</h4>
@@ -27,3 +39,12 @@
         </div>
     </div>
 </div>
+<div *ngIf="searching" class="container mt-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-dark mb-3 px-4" (click)="onBack()">back</button>
+            <h4 class="mb-4">Search results for "{{banner}}":</h4>
+            <app-search-list [search]="searchQuery" #search></app-search-list>
+        </div>
+    </div>
+ </div>

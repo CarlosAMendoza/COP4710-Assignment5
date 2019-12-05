@@ -14,6 +14,7 @@ import { BookModalComponent } from './getall/books-table/book.modal/book.modal.c
 import { PublisherModalComponent } from './getall/publisher-table/publisher-modal/publisher.modal.component';
 import { AuthorModalComponent } from './getall/author-table/author-modal/author.modal.component';
 import { CopyModalComponent } from './getall/copy-table/copy-modal/copy.modal.component';
+import { SearchListComponent } from './search-list/search-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CopyModalComponent } from './getall/copy-table/copy-modal/copy.modal.co
     BookModalComponent,
     PublisherModalComponent,
     AuthorModalComponent,
-    CopyModalComponent
+    CopyModalComponent,
+    SearchListComponent
   ],
   imports: [
     BrowserModule,

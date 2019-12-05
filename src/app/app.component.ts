@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { SearchListComponent } from './search-list/search-list.component'
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Assignment 5';
+  searching = false
+  searchQuery: string
+  banner: string
+  @ViewChild('search', {static: false}) searchingList: SearchListComponent
+
+  onSearch() {
+    if (this.searching) {
+      this.searchingList.getSearch();
+    }
+    this.searching = true
+
+    this.banner = this.searchQuery
+  }
+
+  onBack() {
+    this.searching = false
+    this.searchQuery = ''
+  }
 }
